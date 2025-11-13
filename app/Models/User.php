@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'created_at',
+        'updated_at',
+        'whatsapp',
+        'latitude',
+        'longitude',
+        'email_verified_at',
+        'remember_token',
     ];
 
     /**
@@ -44,5 +52,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+        public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }
